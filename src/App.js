@@ -47,6 +47,7 @@ function App() {
   const inicial = [
     {
       id: uuidv4(),
+      favorito: false,
       nome: "EDILSON GOMES",
       cargo: "Desenvolvedor de software",
       imagem: "https://github.com/EdilsonGSantos.png",
@@ -55,6 +56,8 @@ function App() {
 
     {
       id: uuidv4(),
+
+      favorito: false,
       nome: "EDILSON GOMES",
       cargo: "Desenvolvedor de software",
       imagem: "https://github.com/EdilsonGSantos.png",
@@ -63,6 +66,7 @@ function App() {
 
     {
       id: uuidv4(),
+      favorito: false,
       nome: "EDILSON GOMES",
       cargo: "Desenvolvedor de software",
       imagem: "https://github.com/EdilsonGSantos.png",
@@ -71,6 +75,7 @@ function App() {
 
     {
       id: uuidv4(),
+      favorito: false,
       nome: "EDILSON GOMES",
       cargo: "Desenvolvedor de software",
       imagem: "https://github.com/EdilsonGSantos.png",
@@ -79,6 +84,7 @@ function App() {
 
     {
       id: uuidv4(),
+      favorito: false,
       nome: "EDILSON GOMES",
       cargo: "Desenvolvedor de software",
       imagem: "https://github.com/EdilsonGSantos.png",
@@ -109,6 +115,15 @@ function App() {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
   }
 
+  function resolverFavorito(id) {
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) colaborador.favorito = !colaborador.favorito;
+        return colaborador;
+      })
+    );
+  }
+
   return (
     <div>
       <Banner />
@@ -123,6 +138,7 @@ function App() {
         <h1>Minha organização</h1>
         {times.map((time, indice) => (
           <Time
+            aoFavoritar={resolverFavorito}
             mudarCor={mudarCorDoTime}
             key={indice}
             time={time}
